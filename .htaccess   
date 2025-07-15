@@ -1,0 +1,32 @@
+# Redirects for clean URLs (optional, but good practice)
+# Requires mod_rewrite to be enabled on your Apache server
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /kelurahan-website/ # Adjust this if your project is in a subdirectory
+
+    # Admin Area (protect access directly via URL if not logged in)
+    RewriteRule ^admin/?$ admin/index.php [L,QSA]
+    RewriteRule ^admin/dashboard/?$ admin/dashboard.php [L,QSA]
+    RewriteRule ^admin/umkm-list/?$ admin/umkm-list.php [L,QSA]
+    RewriteRule ^admin/umkm-create/?$ admin/umkm-create.php [L,QSA]
+    RewriteRule ^admin/umkm-edit/([0-9]+)/?$ admin/umkm-edit.php?id=$1 [L,QSA] # Example for edit with ID
+    RewriteRule ^admin/logout/?$ admin/logout.php [L,QSA]
+
+    # Public Area
+    RewriteRule ^umkm/?$ public/umkm.html [L,QSA]
+    RewriteRule ^kontak/?$ public/kontak.html [L,QSA]
+
+    # Basic security for backend folder (optional but recommended)
+    # Deny direct access to backend files
+    RewriteRule ^backend/.*$ - [F,L]
+</IfModule>
+
+# For PHP versions if not already configured globally
+<IfModule mod_php.c>
+    php_flag display_errors Off
+    php_value error_reporting 30711
+</IfModule>
+
+# AddType for specific files if needed
+AddType application/x-httpd-php .php

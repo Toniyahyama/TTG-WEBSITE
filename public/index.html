@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - UMKM Kelurahan Tanjung Sari</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="font-sans bg-gray-100">
+    <header class="bg-blue-600 text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="assets/img/logo_tanjungsari.png" alt="Logo UMKM Tanjung Sari" class="h-10 mr-3">
+                <h1 class="text-2xl font-bold">UMKM Tanjung Sari</h1>
+            </div>
+            <nav class="space-x-4">
+                <a href="index.html" class="hover:underline">Beranda</a>
+                <a href="umkm.html" class="hover:underline">Daftar UMKM</a>
+                <a href="kontak.html" class="hover:underline">Kontak</a>
+                <a href="../admin/index.php" class="bg-white text-blue-600 font-semibold py-2 px-4 rounded-full hover:bg-gray-200">Login Admin</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="bg-blue-500 text-white py-20 text-center">
+        <div class="container mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Selamat Datang di Marketplace UMKM Kelurahan Tanjung Sari</h2>
+            <p class="text-lg md:text-xl mb-8">Temukan beragam produk dan jasa unggulan dari UMKM lokal kami.</p>
+            <a href="umkm.html" class="bg-white text-blue-600 font-bold py-3 px-8 rounded-full text-lg hover:bg-gray-200 transition duration-300">Jelajahi UMKM Sekarang!</a>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">Kategori Populer</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="p-6 rounded-lg shadow-md bg-gray-50 hover:shadow-lg transition duration-300">
+                    <img src="assets/img/category_food.jpg" alt="Kuliner" class="w-full h-40 object-cover rounded mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Kuliner</h3>
+                    <p class="text-gray-600">Aneka makanan lezat dan minuman segar.</p>
+                </div>
+                <div class="p-6 rounded-lg shadow-md bg-gray-50 hover:shadow-lg transition duration-300">
+                    <img src="assets/img/category_services.jpg" alt="Jasa" class="w-full h-40 object-cover rounded mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Jasa</h3>
+                    <p class="text-gray-600">Berbagai layanan profesional dan rumah tangga.</p>
+                </div>
+                <div class="p-6 rounded-lg shadow-md bg-gray-50 hover:shadow-lg transition duration-300">
+                    <img src="assets/img/category_store.jpg" alt="Toko Kelontong" class="w-full h-40 object-cover rounded mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Toko & Peralatan</h3>
+                    <p class="text-gray-600">Produk kebutuhan sehari-hari dan perlengkapan.</p>
+                </div>
+                <div class="p-6 rounded-lg shadow-md bg-gray-50 hover:shadow-lg transition duration-300">
+                    <img src="assets/img/category_other.jpg" alt="Lainnya" class="w-full h-40 object-cover rounded mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Lainnya</h3>
+                    <p class="text-gray-600">Temukan hal menarik lainnya di sini.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-blue-100">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <img src="assets/img/about_kelurahan.jpg" alt="Kelurahan Tanjung Sari" class="rounded-lg shadow-lg">
+            </div>
+            <div class="md:w-1/2 md:pl-12 text-center md:text-left">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Tentang Kelurahan Tanjung Sari</h2>
+                <p class="text-gray-700 leading-relaxed">
+                    Kelurahan Tanjung Sari berkomitmen untuk mendukung pertumbuhan ekonomi lokal melalui pemberdayaan UMKM.
+                    Platform ini menjadi jembatan bagi masyarakat untuk menemukan dan mendukung usaha-usaha kecil di lingkungan kita.
+                    Bersama, kita bangun ekonomi yang kuat dan mandiri.
+                </p>
+                <a href="kontak.html" class="mt-6 inline-block bg-blue-600 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-700 transition duration-300">Hubungi Kami</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white p-6 text-center">
+        <div class="container mx-auto">
+            <p>&copy; 2025 UMKM Kelurahan Tanjung Sari. All rights reserved.</p>
+            <div class="mt-4">
+                <a href="#" class="text-gray-400 hover:text-white mx-2">Kebijakan Privasi</a>
+                <span class="text-gray-400">|</span>
+                <a href="#" class="text-gray-400 hover:text-white mx-2">Syarat & Ketentuan</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

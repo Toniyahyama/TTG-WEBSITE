@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar UMKM - UMKM Kelurahan Tanjung Sari</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="font-sans bg-gray-100">
+    <header class="bg-blue-600 text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="assets/img/logo_tanjungsari.png" alt="Logo UMKM Tanjung Sari" class="h-10 mr-3">
+                <h1 class="text-2xl font-bold">UMKM Tanjung Sari</h1>
+            </div>
+            <div class="flex-grow max-w-md mx-4">
+                <input type="text" id="searchBar" placeholder="Cari UMKM..." class="w-full p-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+            <nav class="space-x-4">
+                <a href="index.html" class="hover:underline">Beranda</a>
+                <a href="umkm.html" class="hover:underline">Daftar UMKM</a>
+                <a href="kontak.html" class="hover:underline">Kontak</a>
+                <a href="../admin/index.php" class="bg-white text-blue-600 font-semibold py-2 px-4 rounded-full hover:bg-gray-200">Login Admin</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container mx-auto p-6 flex flex-col md:flex-row gap-6">
+        <aside class="w-full md:w-1/4 bg-white p-6 rounded-lg shadow-md h-fit md:sticky top-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Filter Kategori</h3>
+            <ul id="categoryFilter">
+                <li><button class="category-btn w-full text-left py-2 px-4 rounded hover:bg-gray-200 mb-2 active:bg-blue-100" data-category="Semua">Semua Kategori</button></li>
+                <li><button class="category-btn w-full text-left py-2 px-4 rounded hover:bg-gray-200 mb-2" data-category="Kuliner">Kuliner</button></li>
+                <li><button class="category-btn w-full text-left py-2 px-4 rounded hover:bg-gray-200 mb-2" data-category="Jasa">Jasa</button></li>
+                <li><button class="category-btn w-full text-left py-2 px-4 rounded hover:bg-gray-200 mb-2" data-category="Toko Kelontong & Peralatan">Toko Kelontong & Peralatan</button></li>
+                <li><button class="category-btn w-full text-left py-2 px-4 rounded hover:bg-gray-200 mb-2" data-category="Lainnya">Lainnya</button></li>
+            </ul>
+        </aside>
+
+        <main class="flex-1">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Daftar UMKM Kelurahan Tanjung Sari</h2>
+            <div id="umkmList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                </div>
+            <p id="noUmkmMessage" class="text-center mt-8 text-gray-500 hidden">Tidak ada UMKM yang ditemukan.</p>
+        </main>
+    </div>
+
+    <footer class="bg-gray-800 text-white p-6 text-center mt-10">
+        <div class="container mx-auto">
+            <p>&copy; 2025 UMKM Kelurahan Tanjung Sari. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+        let allUmkms = []; // To store all fetched UMKM data
+
+        document.addEventListener('DOMContentLoaded', fetchAndDisplayUmkms);
+        document.getElementById('searchBar').addEventListener('keyup', filterUmkms);
+        document.getElementById('categoryFilter').addEventListener('click', (e) => {
+            if (e.target.classList.contains('category-btn')) {
+                // Remove active class from all buttons
+                document.querySelectorAll('.category-btn').forEach(btn => {
+                    btn.classList.remove('active:bg-blue-100');
+                });
+                // Add active class to clicked button
+                e.target.classList.add('active:bg-blue-100');
+
+                filterUmkms(); // Re-filter based on new category
+            }
+        });
+
+        async function fetchAndDisplayUmkms() {
+            try {
+                const response = await fetch('../backend/get_umkm.php');
+                const data = await response.json();
+
+                if (data.success) {
+                    allUmkms = data.data; // Store all data
+                    displayUmkms(allUmkms); // Display initially
+                } else {
+                    document.getElementById('umkmList').innerHTML = `<p class="text-center text-red-500 col-span-full">${data.message}</p>`;
+                    document.getElementById('noUmkmMessage').classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('Error fetching UMKM data:', error);
+                document.getElementById('umkmList').innerHTML = `<p class="text-center text-red-500 col-span-full">Gagal memuat data UMKM.</p>`;
+                document.getElementById('noUmkmMessage').classList.remove('hidden');
+            }
+        }
+
+        function displayUmkms(umkmsToDisplay) {
+            const umkmListContainer = document.getElementById('umkmList');
+            const noUmkmMessage = document.getElementById('noUmkmMessage');
+            umkmListContainer.innerHTML = '';
+
+            if (umkmsToDisplay.length === 0) {
+                noUmkmMessage.classList.remove('hidden');
+                return;
+            } else {
+                noUmkmMessage.classList.add('hidden');
+            }
+
+            umkmsToDisplay.forEach(umkm => {
+                const defaultImage = 'assets/img/default_umkm.png'; // Default image path
+                const imageUrl = umkm.foto ? `../uploads/umkm/${umkm.foto}` : defaultImage;
+                const whatsappLink = `https://wa.me/${umkm.no_telp}`;
+
+                const card = `
+                    <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition duration-300">
+                        <img src="${imageUrl}" alt="${umkm.nama_umkm}" class="w-32 h-32 object-cover rounded-full mb-4 border-2 border-blue-300">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">${umkm.nama_umkm}</h3>
+                        <p class="text-blue-600 font-medium mb-2">${umkm.kategori_umkm}</p>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">${umkm.deskripsi || 'Tidak ada deskripsi.'}</p>
+                        <a href="${whatsappLink}" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172l-.172-.172a2 2 0 00-2.828 0L2.586 7a2 2 0 00-2.828 2.828L5 14.828 7.172 17a2 2 0 002.828 0L17.414 10.172a2 2 0 000-2.828z"></path></svg>
+                            Chat WhatsApp
+                        </a>
+                    </div>
+                `;
+                umkmListContainer.innerHTML += card;
+            });
+        }
+
+        function filterUmkms() {
+            const searchTerm = document.getElementById('searchBar').value.toLowerCase();
+            const activeCategoryButton = document.querySelector('.category-btn.active\\:bg-blue-100');
+            const selectedCategory = activeCategoryButton ? activeCategoryButton.dataset.category : 'Semua';
+
+            const filteredUmkms = allUmkms.filter(umkm => {
+                const matchesSearch = umkm.nama_umkm.toLowerCase().includes(searchTerm) ||
+                                      umkm.deskripsi.toLowerCase().includes(searchTerm);
+                const matchesCategory = selectedCategory === 'Semua' || umkm.kategori_umkm === selectedCategory;
+                return matchesSearch && matchesCategory;
+            });
+
+            displayUmkms(filteredUmkms);
+        }
+
+        // Initial active state for "Semua Kategori"
+        document.querySelector('.category-btn[data-category="Semua"]').classList.add('active:bg-blue-100');
+    </script>
+</body>
+</html>
