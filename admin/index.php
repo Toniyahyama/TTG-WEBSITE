@@ -18,7 +18,10 @@ if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
     <div class="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full">
         <h2 class="text-2xl font-bold text-center mb-6">Admin Login</h2>
-        <form id="loginForm">
+        <form id="loginForm" action="../backend/login.php" method="POST">
+            <noscript>
+                <p class="text-center mt-4 text-sm text-red-500">JavaScript is required to login. Please enable JavaScript in your browser.</p>
+            </noscript>
             <div class="mb-4">
                 <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username:</label>
                 <input type="text" id="username" name="username" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>

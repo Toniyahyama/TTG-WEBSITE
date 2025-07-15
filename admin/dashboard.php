@@ -24,7 +24,7 @@ include_once '../backend/auth_check.php'; // Check login status
                         <a href="umkm-list.php" class="block py-2 px-4 rounded hover:bg-gray-700">Manajemen UMKM</a>
                     </li>
                     <li class="mb-2">
-                        <a href="../backend/logout.php" class="block py-2 px-4 rounded hover:bg-red-600 text-red-300">Logout</a>
+                       <a href="logout.php" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Logout</a>
                     </li>
                 </ul>
             </nav>

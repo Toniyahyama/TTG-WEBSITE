@@ -2,7 +2,7 @@
 // backend/db.php
 $servername = "localhost";
 $username = "root"; // Your database username
-$password = "";     // Your database password
+$password = "root";     // Your database password
 $dbname = "tanjak"; // Your database name
 
 // Create connection
