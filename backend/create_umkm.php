@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nama_umkm = $_POST['nama_umkm'] ?? '';
     $kategori_umkm = $_POST['kategori_umkm'] ?? '';
     $alamat = $_POST['alamat'] ?? '';
+    $rw = $_POST['rw'] ?? '';
     $no_telp = $_POST['no_telp'] ?? '';
     $nama_pemilik = $_POST['nama_pemilik'] ?? '';
     $deskripsi = $_POST['deskripsi'] ?? '';
@@ -30,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $check = getimagesize($_FILES["foto"]["tmp_name"]);
         if($check !== false) {
             // Allow certain file formats
-            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "HEIC" ) {
                 $response['message'] = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
             } else {
                 if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {
@@ -49,9 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($foto !== null || (isset($_FILES['foto']) && $_FILES['foto']['error'] !== UPLOAD_ERR_OK)) {
         // Prepare and bind
-        $stmt = $conn->prepare("INSERT INTO umkm (nama_umkm, kategori_umkm, alamat, no_telp, nama_pemilik, deskripsi, foto) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssssss", $nama_umkm, $kategori_umkm, $alamat, $no_telp, $nama_pemilik, $deskripsi, $foto);
-
+        $stmt = $conn->prepare("INSERT INTO umkm (nama_umkm, kategori_umkm, alamat, rw, no_telp, nama_pemilik, deskripsi, foto) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssssss", $nama_umkm, $kategori_umkm, $alamat, $rw, $no_telp, $nama_pemilik, $deskripsi, $foto);
         if ($stmt->execute()) {
             $response['success'] = true;
             $response['message'] = 'UMKM added successfully!';

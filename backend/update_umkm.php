@@ -10,12 +10,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nama_umkm = $_POST['nama_umkm'] ?? '';
     $kategori_umkm = $_POST['kategori_umkm'] ?? '';
     $alamat = $_POST['alamat'] ?? '';
+    $rw = $_POST['rw'] ?? ''; // Tambahkan ini
     $no_telp = $_POST['no_telp'] ?? '';
     $nama_pemilik = $_POST['nama_pemilik'] ?? '';
     $deskripsi = $_POST['deskripsi'] ?? '';
-    $current_foto = $_POST['current_foto'] ?? null; // Hidden field for existing photo
-
-    $foto = $current_foto; // Assume existing photo unless new one is uploaded
+    $current_foto = $_POST['current_foto'] ?? null;
+    $foto = $current_foto;
 
     // Handle file upload (if new image is provided)
     if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
@@ -53,8 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($id_umkm) {
         // Prepare and bind
-        $stmt = $conn->prepare("UPDATE umkm SET nama_umkm = ?, kategori_umkm = ?, alamat = ?, no_telp = ?, nama_pemilik = ?, deskripsi = ?, foto = ? WHERE id_umkm = ?");
-        $stmt->bind_param("sssssssi", $nama_umkm, $kategori_umkm, $alamat, $no_telp, $nama_pemilik, $deskripsi, $foto, $id_umkm);
+        $stmt = $conn->prepare("UPDATE umkm SET nama_umkm = ?, kategori_umkm = ?, alamat = ?, rw = ?, no_telp = ?, nama_pemilik = ?, deskripsi = ?, foto = ? WHERE id_umkm = ?");
+        $stmt->bind_param("ssssssssi", $nama_umkm, $kategori_umkm, $alamat, $rw, $no_telp, $nama_pemilik, $deskripsi, $foto, $id_umkm);
 
         if ($stmt->execute()) {
             $response['success'] = true;

@@ -1,9 +1,9 @@
 <?php
 // backend/db.php
 $servername = "localhost";
-$username = "root"; // Your database username
-$password = "root";     // Your database password
-$dbname = "tanjak"; // Your database name
+$username = "root";
+$password = "";
+$dbname = "tanjak";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

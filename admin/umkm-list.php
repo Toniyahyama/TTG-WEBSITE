@@ -4,6 +4,7 @@ include_once '../backend/auth_check.php'; // Check login status
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@ include_once '../backend/auth_check.php'; // Check login status
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
 </head>
+
 <body class="bg-gray-100 font-sans">
     <div class="flex h-screen bg-gray-200">
         <div class="w-64 bg-gray-800 text-white p-4">
@@ -21,10 +23,11 @@ include_once '../backend/auth_check.php'; // Check login status
                         <a href="dashboard.php" class="block py-2 px-4 rounded hover:bg-gray-700">Dashboard</a>
                     </li>
                     <li class="mb-2">
-                        <a href="umkm-list.php" class="block py-2 px-4 rounded hover:bg-gray-700 active:bg-gray-700">Manajemen UMKM</a>
+                        <a href="umkm-list.php"
+                            class="block py-2 px-4 rounded hover:bg-gray-700 active:bg-gray-700">Manajemen UMKM</a>
                     </li>
                     <li class="mb-2">
-                        <a href="../backend/logout.php" class="block py-2 px-4 rounded hover:bg-red-600 text-red-300">Logout</a>
+                        <a href="logout.php" class="block py-2 px-4 rounded hover:bg-red-600 text-red-300">Logout</a>
                     </li>
                 </ul>
             </nav>
@@ -33,7 +36,8 @@ include_once '../backend/auth_check.php'; // Check login status
         <div class="flex-1 flex flex-col overflow-hidden">
             <header class="flex justify-between items-center bg-white p-4 shadow-md">
                 <h1 class="text-2xl font-semibold text-gray-800">Manajemen UMKM</h1>
-                <a href="umkm-create.php" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Tambah UMKM Baru</a>
+                <a href="umkm-create.php"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Tambah UMKM Baru</a>
             </header>
 
             <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-6">
@@ -46,6 +50,7 @@ include_once '../backend/auth_check.php'; // Check login status
                                     <th class="py-3 px-6 text-left">ID</th>
                                     <th class="py-3 px-6 text-left">Nama UMKM</th>
                                     <th class="py-3 px-6 text-left">Kategori</th>
+                                    <th class="py-3 px-6 text-left">RW</th> <!-- Tambahkan ini -->
                                     <th class="py-3 px-6 text-left">Deskripsi Singkat</th>
                                     <th class="py-3 px-6 text-left">No. WA</th>
                                     <th class="py-3 px-6 text-left">Foto</th>
@@ -53,7 +58,7 @@ include_once '../backend/auth_check.php'; // Check login status
                                 </tr>
                             </thead>
                             <tbody class="text-gray-600 text-sm font-light" id="umkmTableBody">
-                                </tbody>
+                            </tbody>
                         </table>
                         <p id="noUmkmMessage" class="text-center mt-4 text-gray-500 hidden">Tidak ada data UMKM.</p>
                     </div>
@@ -81,6 +86,7 @@ include_once '../backend/auth_check.php'; // Check login status
                                 <td class="py-3 px-6 text-left whitespace-nowrap">${umkm.id_umkm}</td>
                                 <td class="py-3 px-6 text-left">${umkm.nama_umkm}</td>
                                 <td class="py-3 px-6 text-left">${umkm.kategori_umkm}</td>
+                                <td class="py-3 px-6 text-left">${umkm.rw}</td>
                                 <td class="py-3 px-6 text-left">${umkm.deskripsi.substring(0, 50)}...</td>
                                 <td class="py-3 px-6 text-left">${umkm.no_telp}</td>
                                 <td class="py-3 px-6 text-left">
@@ -130,4 +136,5 @@ include_once '../backend/auth_check.php'; // Check login status
     </script>
     <script src="assets/script.js"></script>
 </body>
+
 </html>
