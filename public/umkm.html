@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,7 +17,7 @@
         <h1 class="text-2xl font-bold">UMKM Tanjung Sari</h1>
       </div>
       <div class="flex-grow max-w-md mx-4">
-        <input type="text" id="searchBar" placeholder="Cari UMKM..." class="w-full p-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+        <input type="text" id="mainSearchInput" placeholder="Cari UMKM..." class="w-full p-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400" />
       </div>
       <nav class="space-x-4">
         <a href="index.html" class="hover:underline">Beranda</a>
@@ -30,37 +30,60 @@
 
   <!-- Main Content -->
   <main class="flex-grow">
-    <div class="container mx-auto p-6 flex flex-col md:flex-row gap-6">
-      <!-- Sidebar -->
-      <aside class="w-full md:w-1/4 bg-white p-6 rounded-lg shadow-md h-fit md:sticky top-6">
-        <h3 class="text-xl font-bold text-gray-800 mb-4">Filter</h3>
-        <div class="mb-4">
-          <label for="categoryDropdown" class="block mb-2 text-sm font-medium text-gray-700">Kategori</label>
-          <select id="categoryDropdown" class="w-full p-2 border rounded text-gray-800">
-            <option value="Semua">Semua Kategori</option>
-            <option value="Kuliner">Kuliner</option>
-            <option value="Jasa">Jasa</option>
-            <option value="Toko Kelontong & Peralatan">Toko Kelontong & Peralatan</option>
-            <option value="Lainnya">Lainnya</option>
-          </select>
-        </div>
-        <div>
-          <label for="rwDropdown" class="block mb-2 text-sm font-medium text-gray-700">RW</label>
-          <select id="rwDropdown" class="w-full p-2 border rounded text-gray-800">
-            <option value="Semua">Semua RW</option>
-            <option value="RW 01">RW 01</option>
-            <option value="RW 02">RW 02</option>
-            <option value="RW 03">RW 03</option>
-            <option value="RW 04">RW 04</option>
-            <option value="RW 05">RW 05</option>
-          </select>
-        </div>
-      </aside>
+    <div class="container mx-auto p-6 flex flex-col gap-6">
+      <section>
+        <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">Daftar UMKM Kelurahan Tanjung Sari</h2>
 
-      <!-- UMKM List -->
-      <section class="flex-1">
-        <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Daftar UMKM Kelurahan Tanjung Sari</h2>
-        <div id="umkmList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        <!-- Tombol Filter -->
+        <div class="text-center mb-6">
+          <button onclick="toggleFilterModal()" class="bg-green-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition">
+            🔍 Filter
+          </button>
+        </div>
+
+        <!-- Modal Filter -->
+        <div id="filterModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+          <div class="bg-white w-full max-w-xl p-6 rounded-lg shadow-lg relative">
+            <button onclick="toggleFilterModal()" class="absolute top-4 right-4 text-gray-500 hover:text-red-500 text-2xl">&times;</button>
+            <h3 class="text-xl font-bold mb-4">Advanced Search</h3>
+
+            <div class="mb-4">
+              <label class="block text-sm font-medium mb-1">Nama UMKM atau Deskripsi</label>
+              <input type="text" id="modalSearchInput" class="w-full border p-2 rounded" placeholder="Contoh: Makanan, Toko, Jasa..." />
+            </div>
+
+            <div class="mb-4">
+              <label class="block text-sm font-medium mb-1">Kategori</label>
+              <select id="categoryDropdown" class="w-full border p-2 rounded">
+                <option value="Semua">Semua Kategori</option>
+                <option value="Kuliner">Kuliner</option>
+                <option value="Jasa">Jasa</option>
+                <option value="Toko Kelontong & Peralatan">Toko Kelontong & Peralatan</option>
+                <option value="Lainnya">Lainnya</option>
+              </select>
+            </div>
+
+            <div class="mb-4">
+              <label class="block text-sm font-medium mb-1">RW</label>
+              <select id="rwDropdown" class="w-full border p-2 rounded">
+                <option value="Semua">Semua RW</option>
+                <option value="RW 01">RW 01</option>
+                <option value="RW 02">RW 02</option>
+                <option value="RW 03">RW 03</option>
+                <option value="RW 04">RW 04</option>
+                <option value="RW 05">RW 05</option>
+              </select>
+            </div>
+
+            <div class="text-right">
+              <button onclick="toggleFilterModal()" class="px-4 py-2 rounded border mr-2">Tutup</button>
+              <button onclick="filterUmkms()" class="px-4 py-2 rounded bg-green-600 text-white hover:bg-green-700">Terapkan</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- UMKM List -->
+        <div id="umkmList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"></div>
         <p id="noUmkmMessage" class="text-center mt-8 text-gray-500 hidden">Tidak ada UMKM yang ditemukan.</p>
       </section>
     </div>
@@ -73,31 +96,55 @@
     </div>
   </footer>
 
+  <!-- Script -->
   <script>
-    let allUmkms = [];
+    document.addEventListener('DOMContentLoaded', () => {
+      filterUmkms(true);
+      document.getElementById('mainSearchInput').addEventListener('keyup', () => {
+        filterUmkms(true);
+      });
+    });
 
-    document.addEventListener('DOMContentLoaded', fetchAndDisplayUmkms);
-    document.getElementById('searchBar').addEventListener('keyup', filterUmkms);
-    document.getElementById('categoryDropdown').addEventListener('change', filterUmkms);
-    document.getElementById('rwDropdown').addEventListener('change', filterUmkms);
+    function toggleFilterModal() {
+      const modal = document.getElementById("filterModal");
+      modal.classList.toggle("hidden");
+      modal.classList.toggle("flex");
+    }
 
-    async function fetchAndDisplayUmkms() {
+    async function filterUmkms(fromMainSearch = false) {
+      const search = fromMainSearch
+        ? document.getElementById('mainSearchInput').value.toLowerCase()
+        : document.getElementById('modalSearchInput').value.toLowerCase();
+
+      const category = document.getElementById('categoryDropdown').value;
+      let rw = document.getElementById('rwDropdown').value;
+
+      if (rw !== 'Semua') {
+        rw = rw.replace('RW ', '').padStart(2, '0'); // RW 01 → 01
+      }
+
       try {
-        const response = await fetch('../backend/get_umkm.php');
+        const url = new URL('../backend/get_umkm.php', window.location.href);
+        if (category !== 'Semua') url.searchParams.append('kategori', category);
+        if (rw !== 'Semua') url.searchParams.append('rw', rw);
+        if (search.trim() !== '') url.searchParams.append('search', search);
+
+        const response = await fetch(url);
         const data = await response.json();
 
         if (data.success) {
-          allUmkms = data.data;
-          displayUmkms(allUmkms);
+          displayUmkms(data.data);
         } else {
           document.getElementById('umkmList').innerHTML = `<p class="text-center text-red-500 col-span-full">${data.message}</p>`;
           document.getElementById('noUmkmMessage').classList.remove('hidden');
         }
-      } catch (error) {
-        console.error('Error fetching UMKM data:', error);
-        document.getElementById('umkmList').innerHTML = `<p class="text-center text-red-500 col-span-full">Gagal memuat data UMKM.</p>`;
+      } catch (err) {
+        console.error('Filter fetch failed:', err);
+        document.getElementById('umkmList').innerHTML = `<p class="text-center text-red-500 col-span-full">Gagal memuat data hasil filter.</p>`;
         document.getElementById('noUmkmMessage').classList.remove('hidden');
       }
+
+      if (!fromMainSearch) toggleFilterModal();
     }
 
     function displayUmkms(umkmsToDisplay) {
@@ -115,35 +162,23 @@
       umkmsToDisplay.forEach(umkm => {
         const imageUrl = umkm.foto ? `../uploads/umkm/${umkm.foto}` : 'assets/img/default_umkm.png';
         const whatsappLink = `https://wa.me/${umkm.no_telp}`;
+        const detailLink = `umkm-detail.html?id=${umkm.id_umkm}`;
 
         const card = `
-          <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition duration-300">
+          <div onclick="window.location.href='${detailLink}'"
+               class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition duration-300 cursor-pointer">
             <img src="${imageUrl}" alt="${umkm.nama_umkm}" class="w-32 h-32 object-cover rounded-full mb-4 border-2 border-blue-300">
             <h3 class="text-xl font-semibold text-gray-800 mb-2">${umkm.nama_umkm}</h3>
             <p class="text-blue-600 font-medium mb-2">${umkm.kategori_umkm}</p>
             <p class="text-gray-600 text-sm mb-4">${umkm.deskripsi || 'Tidak ada deskripsi.'}</p>
-            <a href="${whatsappLink}" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full flex items-center justify-center">
+            <a href="${whatsappLink}" target="_blank" onclick="event.stopPropagation()"
+               class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full flex items-center justify-center">
               Chat WhatsApp
             </a>
           </div>
         `;
         container.innerHTML += card;
       });
-    }
-
-    function filterUmkms() {
-      const search = document.getElementById('searchBar').value.toLowerCase();
-      const category = document.getElementById('categoryDropdown').value;
-      const rw = document.getElementById('rwDropdown').value;
-
-      const filtered = allUmkms.filter(umkm => {
-        const matchSearch = umkm.nama_umkm.toLowerCase().includes(search) || umkm.deskripsi.toLowerCase().includes(search);
-        const matchCategory = category === 'Semua' || umkm.kategori_umkm === category;
-        const matchRw = rw === 'Semua' || umkm.rw === rw;
-        return matchSearch && matchCategory && matchRw;
-      });
-
-      displayUmkms(filtered);
     }
   </script>
 </body>
