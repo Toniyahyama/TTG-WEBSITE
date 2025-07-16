@@ -24,161 +24,149 @@ if (!$umkm) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit UMKM - Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/css/umkm-edit.css">
 </head>
 
 <body class="bg-gray-100 font-sans">
-    <div class="flex h-screen bg-gray-200">
-        <div class="w-64 bg-gray-800 text-white p-4">
-            <h2 class="text-2xl font-bold mb-6">Admin Panel</h2>
-            <nav>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2 class="sidebar-title">Admin Panel</h2>
+            <nav class="sidebar-nav">
                 <ul>
-                    <li class="mb-2">
-                        <a href="dashboard.php" class="block py-2 px-4 rounded hover:bg-gray-700">Dashboard</a>
+                    <li>
+                        <a href="dashboard.php">Dashboard</a>
                     </li>
-                    <li class="mb-2">
-                        <a href="umkm-list.php"
-                            class="block py-2 px-4 rounded hover:bg-gray-700 active:bg-gray-700">Manajemen UMKM</a>
+                    <li>
+                        <a href="umkm-list.php" class="active">Manajemen UMKM</a>
                     </li>
-                    <li class="mb-2">
-                        <a href="../backend/logout.php"
-                            class="block py-2 px-4 rounded hover:bg-red-600 text-red-300">Logout</a>
+                    <li>
+                        <a href="../backend/logout.php" class="logout">Logout</a>
                     </li>
                 </ul>
             </nav>
         </div>
 
-        <div class="flex-1 flex flex-col overflow-hidden">
-            <header class="flex justify-between items-center bg-white p-4 shadow-md">
-                <h1 class="text-2xl font-semibold text-gray-800">Edit UMKM</h1>
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <h1>Edit UMKM</h1>
             </header>
 
-            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-6">
-                <div class="bg-white p-6 rounded-lg shadow-md max-w-2xl mx-auto">
+            <!-- Content Area -->
+            <main class="content-area">
+                <div class="form-container">
                     <form id="editUmkmForm" enctype="multipart/form-data">
                         <input type="hidden" name="id_umkm" value="<?php echo htmlspecialchars($umkm['id_umkm']); ?>">
                         <input type="hidden" name="current_foto" value="<?php echo htmlspecialchars($umkm['foto']); ?>">
 
-                        <div class="mb-4">
-                            <label for="nama_umkm" class="block text-gray-700 text-sm font-bold mb-2">Nama UMKM:</label>
-                            <input type="text" id="nama_umkm" name="nama_umkm"
-                                value="<?php echo htmlspecialchars($umkm['nama_umkm']); ?>"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                required>
+                        <div class="form-field">
+                            <label for="nama_umkm" class="form-label">Nama UMKM:</label>
+                            <input type="text" 
+                                   id="nama_umkm" 
+                                   name="nama_umkm"
+                                   value="<?php echo htmlspecialchars($umkm['nama_umkm']); ?>"
+                                   class="form-input"
+                                   required>
                         </div>
-                        <div class="mb-4">
-                            <label for="kategori_umkm"
-                                class="block text-gray-700 text-sm font-bold mb-2">Kategori:</label>
-                            <select id="kategori_umkm" name="kategori_umkm"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                required>
+
+                        <div class="form-field">
+                            <label for="kategori_umkm" class="form-label">Kategori:</label>
+                            <select id="kategori_umkm" name="kategori_umkm" class="form-select" required>
                                 <option value="">Pilih Kategori</option>
                                 <option value="Kuliner" <?php echo ($umkm['kategori_umkm'] == 'Kuliner') ? 'selected' : ''; ?>>Kuliner</option>
-                                <option value="Jasa" <?php echo ($umkm['kategori_umkm'] == 'Jasa') ? 'selected' : ''; ?>>
-                                    Jasa</option>
+                                <option value="Jasa" <?php echo ($umkm['kategori_umkm'] == 'Jasa') ? 'selected' : ''; ?>>Jasa</option>
                                 <option value="Toko Kelontong & Peralatan" <?php echo ($umkm['kategori_umkm'] == 'Toko Kelontong & Peralatan') ? 'selected' : ''; ?>>Toko Kelontong & Peralatan</option>
                                 <option value="Lainnya" <?php echo ($umkm['kategori_umkm'] == 'Lainnya') ? 'selected' : ''; ?>>Lainnya</option>
                             </select>
                         </div>
-                        <div class="mb-4">
-                            <label for="deskripsi" class="block text-gray-700 text-sm font-bold mb-2">Deskripsi
-                                Singkat:</label>
-                            <textarea id="deskripsi" name="deskripsi" rows="3"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"><?php echo htmlspecialchars($umkm['deskripsi']); ?></textarea>
+
+                        <div class="form-field">
+                            <label for="deskripsi" class="form-label">Deskripsi Singkat:</label>
+                            <textarea id="deskripsi" 
+                                      name="deskripsi" 
+                                      rows="3"
+                                      class="form-textarea"><?php echo htmlspecialchars($umkm['deskripsi']); ?></textarea>
                         </div>
-                        <div class="mb-4">
-                            <label for="alamat" class="block text-gray-700 text-sm font-bold mb-2">Alamat:</label>
-                            <input type="text" id="alamat" name="alamat"
-                                value="<?php echo htmlspecialchars($umkm['alamat']); ?>"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+
+                        <div class="form-field">
+                            <label for="alamat" class="form-label">Alamat:</label>
+                            <input type="text" 
+                                   id="alamat" 
+                                   name="alamat"
+                                   value="<?php echo htmlspecialchars($umkm['alamat']); ?>"
+                                   class="form-input">
                         </div>
-                        <div class="mb-4">
-                            <label for="rw" class="block text-gray-700 text-sm font-bold mb-2">RW:</label>
-                            <input type="text" id="rw" name="rw" value="<?php echo htmlspecialchars($umkm['rw']); ?>"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+
+                        <div class="form-field">
+                            <label for="rw" class="form-label">RW:</label>
+                            <input type="text" 
+                                   id="rw" 
+                                   name="rw" 
+                                   value="<?php echo htmlspecialchars($umkm['rw']); ?>"
+                                   class="form-input">
                         </div>
-                        <div class="mb-4">
-                            <label for="no_telp" class="block text-gray-700 text-sm font-bold mb-2">Nomor
-                                WhatsApp:</label>
-                            <input type="text" id="no_telp" name="no_telp"
-                                value="<?php echo htmlspecialchars($umkm['no_telp']); ?>"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                placeholder="Contoh: 6281234567890">
-                            <p class="text-xs text-gray-500 mt-1">Gunakan format internasional tanpa '+': 628...</p>
+
+                        <div class="form-field">
+                            <label for="no_telp" class="form-label">Nomor WhatsApp:</label>
+                            <input type="text" 
+                                   id="no_telp" 
+                                   name="no_telp"
+                                   value="<?php echo htmlspecialchars($umkm['no_telp']); ?>"
+                                   class="form-input"
+                                   placeholder="Contoh: 6281234567890">
+                            <p class="help-text">Gunakan format internasional tanpa '+': 628...</p>
                         </div>
-                        <div class="mb-4">
-                            <label for="nama_pemilik" class="block text-gray-700 text-sm font-bold mb-2">Nama
-                                Pemilik:</label>
-                            <input type="text" id="nama_pemilik" name="nama_pemilik"
-                                value="<?php echo htmlspecialchars($umkm['nama_pemilik']); ?>"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+
+                        <div class="form-field">
+                            <label for="nama_pemilik" class="form-label">Nama Pemilik:</label>
+                            <input type="text" 
+                                   id="nama_pemilik" 
+                                   name="nama_pemilik"
+                                   value="<?php echo htmlspecialchars($umkm['nama_pemilik']); ?>"
+                                   class="form-input">
                         </div>
-                        <div class="mb-6">
-                            <label for="foto" class="block text-gray-700 text-sm font-bold mb-2">Ganti Foto
-                                (Opsional):</label>
+
+                        <div class="form-field">
+                            <label for="foto" class="form-label">Ganti Foto (Opsional):</label>
                             <?php if ($umkm['foto']): ?>
                                 <p class="text-sm text-gray-600 mb-2">Foto saat ini:</p>
                                 <img src="../uploads/umkm/<?php echo htmlspecialchars($umkm['foto']); ?>"
-                                    alt="Current UMKM Photo" class="w-32 h-32 object-cover rounded mb-2">
+                                     alt="Current UMKM Photo" 
+                                     class="current-image">
                             <?php endif; ?>
-                            <input type="file" id="foto" name="foto" accept="image/*"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                            <p class="text-xs text-gray-500 mt-1">Biarkan kosong jika tidak ingin mengubah foto.</p>
+                            <input type="file" 
+                                   id="foto" 
+                                   name="foto" 
+                                   accept="image/*"
+                                   class="form-input">
+                            <p class="help-text">Biarkan kosong jika tidak ingin mengubah foto. Maksimal 5MB.</p>
                         </div>
-                        <div class="flex items-center justify-between">
-                            <button type="submit"
-                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
                                 Update UMKM
                             </button>
-                            <a href="umkm-list.php"
-                                class="inline-block align-baseline font-bold text-sm text-gray-500 hover:text-gray-800">Batal</a>
+                            <a href="umkm-list.php" class="btn btn-secondary">Batal</a>
                         </div>
-                        <p id="formMessage" class="text-center mt-4 text-sm"></p>
+
+                        <p id="formMessage" class="message"></p>
                     </form>
                 </div>
             </main>
         </div>
     </div>
 
-    <script>
-        document.getElementById('editUmkmForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const form = e.target;
-            const formData = new FormData(form);
-            const formMessage = document.getElementById('formMessage');
-
-            try {
-                const response = await fetch('../backend/update_umkm.php', {
-                    method: 'POST',
-                    body: formData
-                });
-                const data = await response.json();
-                if (data.success) {
-                    formMessage.textContent = data.message;
-                    formMessage.className = 'text-center mt-4 text-sm text-green-500';
-                    // Optionally redirect to list after a short delay
-                    setTimeout(() => {
-                        window.location.href = 'umkm-list.php';
-                    }, 1500);
-                } else {
-                    formMessage.textContent = data.message;
-                    formMessage.className = 'text-center mt-4 text-sm text-red-500';
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                formMessage.textContent = 'An error occurred. Please try again.';
-                formMessage.className = 'text-center mt-4 text-sm text-red-500';
-            }
-        });
-    </script>
-    <script src="assets/script.js"></script>
+    <script src="assets/js/umkm-edit.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>

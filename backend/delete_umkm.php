@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $umkm_data = $result->fetch_assoc();
         $stmt_select->close();
 
-        if ($umkm_data && $umkm_data['foto'] && $umkm_data['foto'] != 'default_umkm.png') {
+        if ($umkm_data && $umkm_data['foto'] && $umkm_data['foto'] != 'default.jpeg') {
             $target_dir = "../uploads/umkm/";
             $file_to_delete = $target_dir . $umkm_data['foto'];
             if (file_exists($file_to_delete)) {
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($stmt->execute()) {
             $response['success'] = true;
-            $response['message'] = 'UMKM deleted successfully!';
+            $response['message'] = 'Berhasil menghapus UMKM.';
         } else {
             $response['message'] = 'Error deleting UMKM: ' . $stmt->error;
         }

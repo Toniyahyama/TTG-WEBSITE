@@ -6,4 +6,3 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     header('Location: ../admin/index.php'); // Redirect to login page
     exit();
 }
-?>

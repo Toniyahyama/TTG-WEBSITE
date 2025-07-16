@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } else {
         // Use default image if no image uploaded
-        $foto = 'default_umkm.png'; // Make sure you have a default_umkm.png in uploads/umkm/
+        $foto = 'default.jpeg'; // Make sure you have a default.jpeg in uploads/umkm/
     }
 
     if ($foto !== null || (isset($_FILES['foto']) && $_FILES['foto']['error'] !== UPLOAD_ERR_OK)) {

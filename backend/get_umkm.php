@@ -4,7 +4,8 @@ include_once 'db.php';
 
 $response = ['success' => false, 'data' => [], 'message' => ''];
 
-$sql = "SELECT id_umkm, nama_umkm, kategori_umkm, deskripsi, no_telp, foto FROM umkm ORDER BY created_at DESC";
+// Tambahkan rw pada SELECT
+$sql = "SELECT id_umkm, nama_umkm, kategori_umkm, rw, deskripsi, no_telp, foto FROM umkm ORDER BY created_at DESC";
 $result = $conn->query($sql);
 
 if ($result) {

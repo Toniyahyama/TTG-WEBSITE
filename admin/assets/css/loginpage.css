@@ -1,0 +1,282 @@
+/* Login Page CSS - UMKM Tanjung Sari */
+
+/* Base Styles */
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Login Container */
+.login-container {
+    background-color: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+/* Login Card */
+.login-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    max-width: 24rem;
+    width: 100%;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Login Title */
+.login-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #1f2937;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group:last-of-type {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    color: #374151;
+    font-size: 0.875rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.form-input {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    appearance: none;
+    border: 1px solid #d1d5db;
+    border-radius: 0.25rem;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    color: #374151;
+    line-height: 1.25;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    box-sizing: border-box;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-input:hover {
+    border-color: #9ca3af;
+}
+
+/* Password Field Specific */
+.password-group {
+    position: relative;
+}
+
+.password-input {
+    margin-bottom: 0.75rem;
+}
+
+/* Forgot Password Link */
+.forgot-password {
+    text-align: right;
+    font-size: 0.875rem;
+}
+
+.forgot-password a {
+    color: #3b82f6;
+    text-decoration: none;
+    transition: color 0.15s ease-in-out;
+}
+
+.forgot-password a:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+/* Login Button */
+.login-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.login-button {
+    background-color: #3b82f6;
+    color: white;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.15s ease-in-out, transform 0.1s ease-in-out;
+    font-size: 0.875rem;
+}
+
+.login-button:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+.login-button:active {
+    transform: translateY(0);
+}
+
+.login-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+.login-button:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Loading State */
+.login-button.loading {
+    position: relative;
+    color: transparent;
+}
+
+.login-button.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1rem;
+    height: 1rem;
+    margin: -0.5rem 0 0 -0.5rem;
+    border: 2px solid #ffffff;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Message Styles */
+.login-message {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.login-message.success {
+    color: #059669;
+    background-color: #d1fae5;
+    border: 1px solid #a7f3d0;
+}
+
+.login-message.error {
+    color: #dc2626;
+    background-color: #fee2e2;
+    border: 1px solid #fecaca;
+}
+
+/* NoScript Message */
+.noscript-message {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: #dc2626;
+    background-color: #fee2e2;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid #fecaca;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+    .login-container {
+        padding: 0.5rem;
+    }
+    
+    .login-card {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .login-title {
+        font-size: 1.25rem;
+    }
+}
+
+/* Focus Styles for Accessibility */
+.login-card *:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+.login-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Dark Mode Support (optional) */
+@media (prefers-color-scheme: dark) {
+    .login-container {
+        background-color: #111827;
+    }
+    
+    .login-card {
+        background-color: #1f2937;
+        border: 1px solid #374151;
+    }
+    
+    .login-title {
+        color: #f9fafb;
+    }
+    
+    .form-label {
+        color: #e5e7eb;
+    }
+    
+    .form-input {
+        background-color: #374151;
+        border-color: #4b5563;
+        color: #f9fafb;
+    }
+    
+    .form-input:focus {
+        border-color: #3b82f6;
+        background-color: #4b5563;
+    }
+    
+    .forgot-password a {
+        color: #60a5fa;
+    }
+    
+    .forgot-password a:hover {
+        color: #3b82f6;
+    }
+}

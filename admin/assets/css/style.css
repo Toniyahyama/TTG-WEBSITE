@@ -1,0 +1,14 @@
+/* admin/assets/style.css */
+/* Custom styles for admin panel, beyond Tailwind defaults if needed */
+
+/* Example: Adjusting active link color */
+.w-64.bg-gray-800 .active\:bg-gray-700 {
+    background-color: #4a5568; /* Darker gray for active state */
+}
+
+/* Ensure images fit well in tables */
+#umkmTable img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
