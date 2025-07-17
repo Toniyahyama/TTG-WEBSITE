@@ -1,0 +1,199 @@
+/* Custom CSS for UMKM Page */
+
+/* Color Variables */
+:root {
+  --primary-color: #606C38;
+  --primary-hover: #4a5329;
+}
+
+/* Header and Footer Background */
+
+
+.navbar {
+  background-color: #606c38;
+  color: white;
+  padding: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  position: relative;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  height: 2.5rem;
+  margin-right: 0.75rem;
+}
+
+.navbar-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.social-icon {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #fef3c7;
+}
+
+/* Primary Button Styling */
+.btn-primary {
+  background-color: var(--primary-color);
+  transition: opacity 0.3s ease;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* Dropdown Box Styling */
+.dropdown-box {
+  position: absolute;
+  z-index: 10;
+}
+
+/* RW Button Styling */
+.rw-btn {
+  background-color: white;
+  border: 1px solid #d1d5db;
+  color: #374151;
+  transition: all 0.3s ease;
+}
+
+.rw-btn:hover {
+  background-color: #f3f4f6;
+}
+
+.rw-btn.active {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+}
+
+/* Category Button Styling */
+.category-btn {
+  transition: all 0.3s ease;
+}
+
+.category-btn.active {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+}
+
+/* UMKM Card Styling */
+.umkm-card {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.umkm-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.umkm-card img {
+  width: 6rem;
+  height: 6rem;
+  margin: 0 auto 1rem auto;
+  border-radius: 50%;
+  border: 2px solid #25D366;
+  object-fit: cover;
+}
+
+.umkm-card h3 {
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.umkm-card .category {
+  color: var(--primary-color);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.umkm-card .description {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.umkm-card .whatsapp-btn {
+  background-color: #25D366;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 1rem;
+  transition: opacity 0.3s ease;
+}
+
+.umkm-card .whatsapp-btn:hover {
+  opacity: 0.9;
+  background-color: #1ebe57;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Elemen sejajar di tengah */
+  gap: 1.5rem;
+  /* Jarak antar elemen */
+}
+
+.footer {
+    background-color: #606c38 !important;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.footer-separator {
+    margin: 0 0.25rem;
+    color: #fff;
+}
+
+.detail-container {
+    transition: all 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dropdown-box {
+    width: 100%;
+    position: relative;
+  }
+
+  .flex-col.md\\:flex-row {
+    gap: 1rem;
+  }
+}

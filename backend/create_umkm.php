@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $check = getimagesize($_FILES["foto"]["tmp_name"]);
         if($check !== false) {
             // Allow certain file formats
-            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "HEIC" ) {
+            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "GIF" ) {
                 $response['message'] = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
             } else {
                 if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {

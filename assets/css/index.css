@@ -1,0 +1,445 @@
+/* === NAVBAR STYLES === */
+.navbar {
+  background-color: #606c38;
+  color: white;
+  padding: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  position: relative;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  height: 2.5rem;
+  margin-right: 0.75rem;
+}
+
+.navbar-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.social-icon {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #fef3c7;
+}
+
+/* === SLIDER STYLES === */
+.main-slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: auto; /* Default untuk proporsi */
+  aspect-ratio: 16 / 9; /* Gunakan aspek rasio untuk menjaga proporsi */
+}
+
+.slider-container {
+  display: flex;
+  transition: transform 1s ease-in-out;
+}
+
+.slider-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain; /* Pastikan gambar tidak terpotong */
+  flex-shrink: 0;
+}
+
+/* === WELCOME SECTION === */
+.welcome-section {
+  background-color: #fefae0;
+  color: #374151;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.welcome-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.welcome-description {
+  font-size: 1.125rem;
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .welcome-title {
+    font-size: 3rem;
+  }
+
+  .welcome-description {
+    font-size: 1.25rem;
+  }
+}
+
+/* === OFFICIALS SECTION === */
+.officials-section {
+  position: relative;
+  width: 100%;
+  padding: 3rem 0;
+  background-color: #eff6ff;
+}
+
+.section-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  text-align: center;
+  color: #111827;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 2.25rem;
+  }
+}
+
+.officials-slider-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.officials-slider {
+  display: flex;
+  transition: transform 0.7s ease-in-out;
+}
+
+.official-card-wrapper {
+  width: 100%;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.official-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.official-photo {
+  margin-bottom: 1rem;
+}
+
+.official-image {
+  width: 12rem;
+  height: 16rem;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.official-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.25rem;
+}
+
+.official-position {
+  color: #374151;
+}
+
+@media (min-width: 768px) {
+  .official-name {
+    font-size: 1.5rem;
+  }
+}
+
+/* === SLIDER DOTS === */
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 0.5rem;
+}
+
+.slider-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: #9ca3af;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.slider-dot.active {
+  background-color: #2563eb;
+}
+
+/* === VISION & MISSION SECTION === */
+.vision-mission-section {
+  padding: 4rem 0;
+  background-color: #f9fafb;
+}
+
+.vision-mission-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .vision-mission-header {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.vision-mission-logo {
+  width: 5rem;
+  height: 5rem;
+  margin-right: 1rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+  .vision-mission-logo {
+    width: 6rem;
+    height: 6rem;
+  }
+}
+
+.vision-mission-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+@media (min-width: 768px) {
+  .vision-mission-title {
+    font-size: 2.25rem;
+  }
+}
+
+.vision-mission-content {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.vision-section,
+.mission-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.vision-title,
+.mission-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.vision-text {
+  color: #374151;
+  line-height: 1.625;
+}
+
+.mission-list {
+  list-style-type: decimal;
+  list-style-position: inside;
+  color: #374151;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* === UMKM SECTION === */
+.umkm-section {
+  padding: 5rem 0;
+  background-color: white;
+}
+
+.umkm-card {
+  display: block;
+  max-width: 64rem;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.umkm-card:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transform: translateY(-0.25rem);
+}
+
+.umkm-image-container {
+  position: relative;
+}
+
+.umkm-image {
+  width: 100%;
+  height: 16rem;
+  object-fit: contain;
+}
+
+@media (min-width: 768px) {
+  .umkm-image {
+    height: 20rem;
+  }
+}
+
+.umkm-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.umkm-content {
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+.umkm-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  transition: text-decoration 0.3s ease;
+}
+
+.umkm-card:hover .umkm-title {
+  text-decoration: underline;
+}
+
+.umkm-description {
+  font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+  .umkm-title {
+    font-size: 1.875rem;
+  }
+
+  .umkm-description {
+    font-size: 1.125rem;
+  }
+}
+
+/* === FOOTER === */
+.footer {
+  background-color: #606c38 !important;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.footer-separator {
+  margin: 0 0.25rem;
+  color: #fff;
+}
+
+.detail-container {
+  transition: all 0.3s ease;
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
+  .navbar-nav {
+    gap: 0.5rem;
+  }
+
+  .navbar-title {
+    font-size: 1.25rem;
+  }
+
+  .welcome-title {
+    font-size: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .official-name {
+    font-size: 1.125rem;
+  }
+
+  .vision-mission-title {
+    font-size: 1.5rem;
+  }
+
+  .umkm-title {
+    font-size: 1.25rem;
+  }
+}
+
+/* === ANIMATION UTILITIES === */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-up {
+  transform: translateY(20px);
+  opacity: 0;
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

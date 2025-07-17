@@ -62,10 +62,17 @@ include_once '../backend/auth_check.php'; // Check login status
                         </div>
                         <div class="mb-4">
                             <label for="rw" class="block text-gray-700 text-sm font-bold mb-2">RW:</label>
-                            <input type="text" id="rw" name="rw"
+                            <select id="rw" name="rw"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                placeholder="Contoh: 2" required>
+                                required>
+                                <option value="">Pilih RW</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                            </select>
                         </div>
+
                         <div class="mb-4">
                             <label for="nama_pemilik" class="block text-gray-700 text-sm font-bold mb-2">Nama
                                 Pemilik:</label>
@@ -93,7 +100,7 @@ include_once '../backend/auth_check.php'; // Check login status
                         </div>
                         <div class="mb-6">
                             <label for="foto" class="block text-gray-700 text-sm font-bold mb-2">Upload Foto:</label>
-                            <input type="file" id="foto" name="foto" accept="image/*"
+                            <input type="file" id="foto" name="foto" accept="image/*,.heic"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                             <p class="text-xs text-gray-500 mt-1">Jika tidak diupload, akan menggunakan gambar default.
                             </p>

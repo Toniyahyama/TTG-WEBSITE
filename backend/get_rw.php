@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-require_once 'koneksi.php'; // pastikan file koneksi ini benar
+require_once 'db.php'; // pastikan file koneksi ini benar
 
 try {
     // Query RW unik dari tabel UMKM (asumsinya RW tersimpan dalam format '01', '02', dst.)

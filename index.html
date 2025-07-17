@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home - UMKM Kelurahan Tanjung Sari</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/index.css" />
+</head>
+
+<body class="font-sans bg-gray-100">
+  <!-- Header/Navbar -->
+  <header class="navbar">
+    <div class="container mx-auto flex justify-between items-center">
+      <div class="navbar-brand">
+        <img src="uploads/logo_pemkot_sby.png" alt="Logo UMKM Tanjung Sari" class="navbar-logo" />
+        <h1 class="navbar-title ml-2">Kelurahan Tanjungsari</h1>
+      </div>
+      <nav class="navbar-nav">
+        <!-- Social Media Icons -->
+        <a href="https://wa.me/6281234567890" target="_blank" class="social-icon" title="Hubungi via WhatsApp">
+          <svg xmlns="http://www.w3.org/2000/svg" class="inline w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.477 2 2 6.477 2 12c0 1.657.402 3.22 1.11 4.6L2 22l5.4-1.11A9.956 9.956 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm-.002 2c4.411 0 8 3.589 8 8 0 4.411-3.589 8-8 8a7.96 7.96 0 0 1-4.6-1.11l-.3-.18-3.3.66.66-3.3-.18-.3A7.96 7.96 0 0 1 4 12c0-4.411 3.589-8 8-8zm3.6 4.8c-.2-.1-.4-.1-.6-.1-.2 0-.4.1-.6.2-.2.1-.5.3-.7.5-.2.2-.4.4-.6.6-.2.2-.3.4-.5.7-.1.2-.2.4-.2.6 0 .2 0 .4.1.6.1.2.2.4.3.6.1.2.3.4.5.6l.1.1c.2.2.4.4.6.5.2.1.4.2.6.3.2.1.4.1.6.1.2 0 .4 0 .6-.1.2-.1.4-.2.6-.3.2-.1.4-.3.6-.5l.1-.1c.2-.2.4-.4.5-.6.1-.2.3-.4.4-.6.1-.2.2-.4.3-.6.1-.2.1-.4.1-.6 0-.2 0-.4-.1-.6-.1-.2-.2-.4-.3-.6-.1-.2-.3-.4-.5-.6l-.1-.1c-.2-.2-.4-.4-.6-.5-.2-.1-.4-.2-.6-.3zm-3.6 4.2c-.2 0-.4-.1-.6-.2-.2-.1-.4-.2-.6-.4-.2-.2-.4-.4-.6-.6-.2-.2-.3-.4-.5-.6-.1-.2-.2-.4-.2-.6 0-.2 0-.4.1-.6.1-.2.2-.4.3-.6.1-.2.3-.4.5-.6l.1-.1c.2-.2.4-.4.6-.5.2-.1.4-.2.6-.3.2-.1.4-.1.6-.1.2 0 .4 0 .6.1.2.1.4.2.6.3.2.1.4.3.6.5l.1.1c.2.2.4.4.5.6.1.2.3.4.4.6.1.2.2.4.3.6.1.2.1.4.1.6 0 .2 0 .4-.1.6-.1.2-.2.4-.3.6-.1.2-.3.4-.5.6l-.1.1c-.2.2-.4.4-.6.5-.2.1-.4.2-.6.3-.2.1-.4.1-.6.1z" />
+          </svg>
+        </a>
+
+        <a href="https://www.instagram.com/kelurahan_tanjungsarisby" target="_blank" class="social-icon"
+          title="Instagram Kelurahan Tanjungsari">
+          <svg xmlns="http://www.w3.org/2000/svg" class="inline w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm4.75-2a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z" />
+          </svg>
+        </a>
+
+        <a href="https://www.youtube.com/@kelurahantanjungsarisurabaya" target="_blank" title="YouTube UMKM Tanjungsari"
+          class="social-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 48 48">
+            <path fill="#FFFFFF"
+              d="M43.6 14.5s-.4-3.1-1.6-4.5c-1.5-1.7-3.2-1.7-4-1.8C33.8 8 24 8 24 8s-9.8 0-14 .2c-.8 0-2.5.1-4 1.8-1.2 1.4-1.6 4.5-1.6 4.5S4 17.9 4 21.3v5.5c0 3.4.4 6.8.4 6.8s.4 3.1 1.6 4.5c1.5 1.7 3.5 1.7 4.4 1.9 3.2.2 13.6.3 13.6.3s9.8 0 14-.2c.8 0 2.5-.1 4-1.8 1.2-1.4 1.6-4.5 1.6-4.5s.4-3.4.4-6.8v-5.5c0-3.4-.4-6.8-.4-6.8z" />
+            <path fill="#606C38" d="M20 31.5V16.5L32 24z" />
+          </svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Slider -->
+  <section class="main-slider">
+    <div id="mainSlider" class="slider-container">
+      <img src="uploads/slider.png" class="slider-image" alt="Slide 1" />
+      <img src="uploads/slider2.png" class="slider-image" alt="Slide 2" />
+      <img src="uploads/gambar3.jpg" class="slider-image" alt="Slide 3" />
+    </div>
+  </section>
+
+  <!-- Welcome Section -->
+  <section class="welcome-section">
+    <h2 class="welcome-title">
+      Selamat Datang di Kelurahan Tanjung Sari
+    </h2>
+    <p class="welcome-description">
+      Temukan beragam informasi dan layanan masyarakat kami di sini.
+    </p>
+  </section>
+
+  <!-- Officials Section -->
+  <section class="officials-section">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="section-title">
+        Pejabat Kelurahan
+      </h2>
+
+      <div class="officials-slider-wrapper">
+        <div id="pejabatSlider" class="officials-slider">
+          <div class="official-card-wrapper">
+            <div class="official-card">
+              <div class="official-photo">
+                <img src="uploads/foto lurah.png" alt="Foto Mohamad Feryadiwinarso, S.T." class="official-image"
+                  loading="lazy" />
+              </div>
+              <h3 class="official-name">
+                MOHAMAD FERYADIWINARSO, S.T.
+              </h3>
+              <p class="official-position">Lurah</p>
+            </div>
+          </div>
+
+          <div class="official-card-wrapper">
+            <div class="official-card">
+              <div class="official-photo">
+                <img src="uploads/width_412.png" alt="Foto Agus Rahmad, A.Md" class="official-image"
+                  loading="lazy" />
+              </div>
+              <h3 class="official-name">
+                AGUS RAHMAD, A.Md
+              </h3>
+              <p class="official-position">Sekretaris Kelurahan</p>
+            </div>
+          </div>
+
+          <div class="official-card-wrapper">
+            <div class="official-card">
+              <div class="official-photo">
+                <img src="uploads/seksi pemerintahan dan pelayanan publik.png" alt="Foto Prabowo Hutomo, PA"
+                  class="official-image" loading="lazy" />
+              </div>
+              <h3 class="official-name">
+                PRABOWO HUTOMO, PA
+              </h3>
+              <p class="official-position">
+                Seksi Pemerintahan dan Pelayanan Publik
+              </p>
+            </div>
+          </div>
+
+          <div class="official-card-wrapper">
+            <div class="official-card">
+              <div class="official-photo">
+                <img src="uploads/width_216.png" alt="Foto Ita Tri Widiawati, S.Sos"
+                  class="official-image" loading="lazy" />
+              </div>
+              <h3 class="official-name">
+                ITA TRI WIDIAWATI, S.Sos
+              </h3>
+              <p class="official-position">
+                Seksi Kesejahteraan Rakyat dan Perekonomian
+              </p>
+            </div>
+          </div>
+
+          <div class="official-card-wrapper">
+            <div class="official-card">
+              <div class="official-photo">
+                <img src="uploads/Seksi Ketentraman, Ketertiban dan Pembangunan.png"
+                  alt="Foto Utik Sulistiyani, SE, M.Si" class="official-image" loading="lazy" />
+              </div>
+              <h3 class="official-name">
+                UTIK SULISTIYANI, SE, M.Si
+              </h3>
+              <p class="official-position">
+                Seksi Ketentraman, Ketertiban dan Pembangunan
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="pejabatDots" class="slider-dots"></div>
+    </div>
+  </section>
+
+  <!-- Vision & Mission Section -->
+  <section class="vision-mission-section">
+    <div class="container mx-auto px-4">
+      <div class="vision-mission-header">
+        <img src="uploads/logo_pemkot_sby.png" alt="Logo Pemkot Surabaya" class="vision-mission-logo" />
+        <h2 class="vision-mission-title">
+          Visi & Misi Kelurahan Tanjung Sari
+        </h2>
+      </div>
+
+      <div class="vision-mission-content">
+        <div class="vision-section">
+          <h3 class="vision-title">Visi</h3>
+          <p class="vision-text">
+            Gotong Royong menuju Surabaya Kota Dunia yang maju, humanis dan
+            berkelanjutan.
+          </p>
+        </div>
+
+        <div class="mission-section">
+          <h3 class="mission-title">Misi</h3>
+          <ol class="mission-list">
+            <li>
+              Mewujudkan perekonomian inklusif untuk meningkatkan
+              kesejahteraan rakyat dan pembukaan lapangan kerja baru melalui
+              penguatan kemandirian ekonomi lokal, kondusifitas iklim
+              investasi, penguatan daya saing Surabaya sebagai pusat
+              penghubung perdagangan dan jasa antar pulau serta internasional.
+            </li>
+            <li>
+              Membangun Sumber Daya Manusia (SDM) unggul berkarakter, sehat
+              jasmani rohani, produktif, religius, berbudaya dalam bingkai
+              kebinekaan melalui peningkatan akses dan kualitas pelayanan
+              kesehatan, pendidikan serta kebutuhan dasar lainnya.
+            </li>
+            <li>
+              Memantapkan penataan ruang kota yang terintegrasi melalui
+              ketersediaan infrastruktur dan utilitas kota yang modern,
+              berkelas dunia serta berkelanjutan.
+            </li>
+            <li>
+              Memantapkan transformasi birokrasi yang bersih, dinamis dan
+              tangkas berbasis digital untuk meningkatkan kualitas pelayanan
+              publik.
+            </li>
+            <li>
+              Menciptakan ketertiban, keamanan, kerukunan sosial dan kepastian
+              hukum yang berkeadilan.
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UMKM Section -->
+  <section class="umkm-section">
+    <div>
+      <a href="umkm.html" class="umkm-card">
+        <div class="umkm-image-container">
+          <img src="uploads/umkm go online.jpg" alt="UMKM Tanjungsari" class="umkm-image" />
+          <div class="umkm-overlay">
+            <div class="umkm-content">
+              <h3 class="umkm-title">
+                Jelajahi Produk & Jasa UMKM
+              </h3>
+              <p class="umkm-description">
+                Temukan beragam usaha lokal terbaik dari Kelurahan Tanjung
+                Sari
+              </p>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container mx-auto">
+      <p>&copy; 2025 UMKM Kelurahan Tanjungsari. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/script.js"></script>
+  <script src="assets/js/index.js"></script>
+</body>
+
+</html>
