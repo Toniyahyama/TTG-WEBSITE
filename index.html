@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home - UMKM Kelurahan Tanjung Sari</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/index.css" />
 </head>
 
@@ -48,22 +48,28 @@
   </header>
 
   <!-- Main Slider -->
-  <section class="main-slider">
+  <section class="main-slider relative fade-in-target">
     <div id="mainSlider" class="slider-container">
-      <img src="uploads/slider.png" class="slider-image" alt="Slide 1" />
+      <img src="uploads/final.png" class="slider-image" alt="Slide 1" />
       <img src="uploads/slider2.png" class="slider-image" alt="Slide 2" />
       <img src="uploads/gambar3.jpg" class="slider-image" alt="Slide 3" />
     </div>
+
+    <!-- Gradien Overlay untuk Transisi yang Halus -->
+    <div class="gradient-overlay"></div>
   </section>
 
   <!-- Welcome Section -->
-  <section class="welcome-section">
-    <h2 class="welcome-title">
-      Selamat Datang di Kelurahan Tanjung Sari
-    </h2>
-    <p class="welcome-description">
-      Temukan beragam informasi dan layanan masyarakat kami di sini.
-    </p>
+  <section class="welcome-section relative">
+    <div class="container mx-auto px-4 py-16 text-center">
+      <h2 class="welcome-title text-4xl font-bold text-gray-800 mb-4">
+        Selamat Datang di Kelurahan Tanjungsari
+      </h2>
+      <p class="welcome-description text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+        Temukan beragam informasi dan layanan masyarakat kami di sini. Kami hadir untuk mendukung kemajuan dan
+        kesejahteraan masyarakat.
+      </p>
+    </div>
   </section>
 
   <!-- Officials Section -->
@@ -78,7 +84,7 @@
           <div class="official-card-wrapper">
             <div class="official-card">
               <div class="official-photo">
-                <img src="uploads/foto lurah.png" alt="Foto Mohamad Feryadiwinarso, S.T." class="official-image"
+                <img src="uploads/lurah.png" alt="Foto Mohamad Feryadiwinarso, S.T." class="official-image"
                   loading="lazy" />
               </div>
               <h3 class="official-name">
@@ -91,8 +97,7 @@
           <div class="official-card-wrapper">
             <div class="official-card">
               <div class="official-photo">
-                <img src="uploads/width_412.png" alt="Foto Agus Rahmad, A.Md" class="official-image"
-                  loading="lazy" />
+                <img src="uploads/width_412.png" alt="Foto Agus Rahmad, A.Md" class="official-image" loading="lazy" />
               </div>
               <h3 class="official-name">
                 AGUS RAHMAD, A.Md
@@ -104,7 +109,7 @@
           <div class="official-card-wrapper">
             <div class="official-card">
               <div class="official-photo">
-                <img src="uploads/seksi pemerintahan dan pelayanan publik.png" alt="Foto Prabowo Hutomo, PA"
+                <img src="uploads/pelayanan_publik.png" alt="Foto Prabowo Hutomo, PA"
                   class="official-image" loading="lazy" />
               </div>
               <h3 class="official-name">
@@ -119,8 +124,8 @@
           <div class="official-card-wrapper">
             <div class="official-card">
               <div class="official-photo">
-                <img src="uploads/width_216.png" alt="Foto Ita Tri Widiawati, S.Sos"
-                  class="official-image" loading="lazy" />
+                <img src="uploads/width_216.png" alt="Foto Ita Tri Widiawati, S.Sos" class="official-image"
+                  loading="lazy" />
               </div>
               <h3 class="official-name">
                 ITA TRI WIDIAWATI, S.Sos
@@ -134,7 +139,7 @@
           <div class="official-card-wrapper">
             <div class="official-card">
               <div class="official-photo">
-                <img src="uploads/Seksi Ketentraman, Ketertiban dan Pembangunan.png"
+                <img src="uploads/ketentraman.png"
                   alt="Foto Utik Sulistiyani, SE, M.Si" class="official-image" loading="lazy" />
               </div>
               <h3 class="official-name">
@@ -158,7 +163,7 @@
       <div class="vision-mission-header">
         <img src="uploads/logo_pemkot_sby.png" alt="Logo Pemkot Surabaya" class="vision-mission-logo" />
         <h2 class="vision-mission-title">
-          Visi & Misi Kelurahan Tanjung Sari
+          Visi & Misi Kelurahan Tanjungsari
         </h2>
       </div>
 
@@ -212,15 +217,14 @@
     <div>
       <a href="umkm.html" class="umkm-card">
         <div class="umkm-image-container">
-          <img src="uploads/umkm go online.jpg" alt="UMKM Tanjungsari" class="umkm-image" />
+          <img src="uploads/umkmlog.png" alt="UMKM Tanjungsari" class="umkm-image" />
           <div class="umkm-overlay">
             <div class="umkm-content">
               <h3 class="umkm-title">
                 Jelajahi Produk & Jasa UMKM
               </h3>
               <p class="umkm-description">
-                Temukan beragam usaha lokal terbaik dari Kelurahan Tanjung
-                Sari
+                Temukan beragam usaha lokal terbaik dari Kelurahan Tanjungsari
               </p>
             </div>
           </div>
@@ -232,7 +236,7 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container mx-auto">
-      <p>&copy; 2025 UMKM Kelurahan Tanjungsari. All rights reserved.</p>
+      <p>&copy; 2025 KKN Tanjak 117. All rights reserved.</p>
     </div>
   </footer>
 

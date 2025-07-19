@@ -62,20 +62,20 @@ class OfficialsSlider {
 
   createDots() {
     this.dotsContainer.innerHTML = '';
-    
+
     for (let i = 0; i < this.totalSlides; i++) {
       const dot = document.createElement('span');
       dot.classList.add('slider-dot');
-      
+
       if (i === this.currentIndex) {
         dot.classList.add('active');
       }
-      
+
       dot.dataset.index = i;
       dot.addEventListener('click', () => {
         this.goToSlide(i);
       });
-      
+
       this.dotsContainer.appendChild(dot);
     }
   }
@@ -132,12 +132,12 @@ class OfficialsSlider {
 
   addEventListeners() {
     const sliderWrapper = this.slider.closest('.officials-slider-wrapper');
-    
+
     if (sliderWrapper) {
       sliderWrapper.addEventListener('mouseenter', () => {
         this.stopAutoSlide();
       });
-      
+
       sliderWrapper.addEventListener('mouseleave', () => {
         this.startAutoSlide();
       });
@@ -163,9 +163,17 @@ const Utils = {
     if (typeof elements === 'string') {
       elements = document.querySelectorAll(elements);
     }
-    
+
     elements.forEach(element => {
-      element.classList.add('fade-in');
+      element.style.opacity = '0'; // Set awal untuk animasi
+      element.style.transform = 'translateY(20px)'; // Posisi awal animasi
+      element.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out'; // Durasi animasi
+
+      // Tambahkan animasi setelah halaman dimuat
+      setTimeout(() => {
+        element.style.opacity = '1';
+        element.style.transform = 'translateY(0)';
+      }, 100); // Delay untuk memastikan animasi terlihat
     });
   },
 
@@ -174,7 +182,7 @@ const Utils = {
     if (typeof elements === 'string') {
       elements = document.querySelectorAll(elements);
     }
-    
+
     elements.forEach(element => {
       element.classList.add('slide-up');
     });
@@ -217,16 +225,16 @@ class Navbar {
 
   addScrollEffect() {
     let lastScrollY = window.scrollY;
-    
+
     window.addEventListener('scroll', () => {
       const currentScrollY = window.scrollY;
-      
+
       if (currentScrollY > 100) {
         this.navbar.classList.add('scrolled');
       } else {
         this.navbar.classList.remove('scrolled');
       }
-      
+
       lastScrollY = currentScrollY;
     });
   }
@@ -272,20 +280,20 @@ class FormValidator {
 
   showError(input, message) {
     input.classList.add('error');
-    
+
     let errorElement = input.nextElementSibling;
     if (!errorElement || !errorElement.classList.contains('error-message')) {
       errorElement = document.createElement('div');
       errorElement.classList.add('error-message');
       input.parentNode.insertBefore(errorElement, input.nextSibling);
     }
-    
+
     errorElement.textContent = message;
   }
 
   clearError(input) {
     input.classList.remove('error');
-    
+
     const errorElement = input.nextElementSibling;
     if (errorElement && errorElement.classList.contains('error-message')) {
       errorElement.remove();
@@ -302,7 +310,7 @@ class LoadingManager {
   init() {
     // Show loading spinner
     this.showLoading();
-    
+
     // Hide loading when page is fully loaded
     window.addEventListener('load', () => {
       this.hideLoading();
@@ -318,7 +326,7 @@ class LoadingManager {
         <p>Memuat...</p>
       </div>
     `;
-    
+
     // Add loader styles
     loader.style.cssText = `
       position: fixed;
@@ -332,7 +340,7 @@ class LoadingManager {
       align-items: center;
       z-index: 9999;
     `;
-    
+
     document.body.appendChild(loader);
   }
 
@@ -360,7 +368,7 @@ class PerformanceOptimizer {
 
   lazyLoadImages() {
     const images = document.querySelectorAll('img[loading="lazy"]');
-    
+
     if ('IntersectionObserver' in window) {
       const imageObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -406,16 +414,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbar = new Navbar();
   const loadingManager = new LoadingManager();
   const performanceOptimizer = new PerformanceOptimizer();
-  
+
   // Initialize scroll animations
   Utils.initScrollAnimations();
-  
+
+  // Tambahkan animasi fade-in pada elemen tertentu
+  Utils.addFadeInAnimation('.welcome-section, .official-card, .vision-mission-content');
+
   // Initialize form validation if contact form exists
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
     new FormValidator('contactForm');
   }
-  
+
   // Add smooth scrolling to anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -424,10 +435,10 @@ document.addEventListener('DOMContentLoaded', () => {
       Utils.scrollTo(targetId);
     });
   });
-  
+
   // Add click tracking for analytics (if needed)
   document.querySelectorAll('.umkm-card, .social-icon').forEach(element => {
-    element.addEventListener('click', function() {
+    element.addEventListener('click', function () {
       // Track clicks for analytics
       console.log('Clicked:', this.getAttribute('href') || this.textContent);
     });

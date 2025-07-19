@@ -1,42 +1,88 @@
-/* Custom CSS untuk Detail UMKM */
+/* assets/css/umkm-detail.css */
 
-/* Styling untuk container detail */
+/* Color Palette */
+:root {
+  --primary-dark: #283618;
+  --primary: #606C38;
+  --background-cream: #FEFAE0;
+  --accent-tan: #DDA15E;
+  --accent-terracotta: #BC6250;
+  --font-dark: #374151;
+  --font-light: #6B7280;
+  --border-color: #E5E7EB;
+}
 
+body {
+    background-color: var(--background-cream);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Header */
 .navbar {
-    background-color: #606c38 !important;
-    color: white;
-    min-height: 64px;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  background-color: var(--primary);
+  color: white;
+  padding: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-back-button {
     display: flex;
     align-items: center;
+    gap: 0.5rem;
+    color: var(--background-cream);
+    font-weight: 500;
+    transition: all 0.2s ease;
 }
 
-.navbar-title {
-    font-size: 1.5rem;
+.navbar-back-button:hover {
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+.navbar-brand {
+    font-size: 1.25rem;
     font-weight: 700;
-    letter-spacing: 0.02em;
+    color: var(--background-cream);
 }
 
-.footer {
-    background-color: #606c38 !important;
-    color: white;
+/* Main Detail Container */
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+    border: 1px solid var(--border-color);
+}
+
+@media (min-width: 768px) {
+    .detail-grid {
+        grid-template-columns: 300px 1fr; /* Image column and content column */
+        padding: 2.5rem;
+    }
+}
+
+/* Left Column: Image & Contact */
+.detail-sidebar {
     text-align: center;
-    padding: 1rem 0;
 }
 
-.footer-separator {
-    margin: 0 0.25rem;
-    color: #fff;
+.umkm-image-wrapper {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 1.5rem auto;
 }
 
-.detail-container {
-    transition: all 0.3s ease;
-}
-
-/* Styling untuk gambar UMKM */
 .umkm-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid white;
+    box-shadow: 0 0 0 3px var(--primary), 0 5px 15px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
 }
 
@@ -44,100 +90,133 @@
     transform: scale(1.05);
 }
 
-/* Styling untuk tombol WhatsApp */
+.contact-info {
+    background-color: #f9fafb;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+}
+
+.contact-info h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--accent-tan);
+    padding-bottom: 0.5rem;
+}
+
+.contact-item {
+    font-size: 0.95rem;
+    color: var(--font-light);
+}
+
+.contact-item strong {
+    color: var(--font-dark);
+}
+
 .whatsapp-button {
+    display: inline-block;
+    width: 100%;
     background-color: #25D366;
     color: white;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+    padding: 0.8rem 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    transition: all 0.2s ease;
+    margin-top: 1rem;
 }
 
 .whatsapp-button:hover {
-    opacity: 0.9;
     background-color: #1ebe57;
     transform: translateY(-2px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
 }
 
-/* Loading animation */
-.loading {
-    animation: pulse 1.5s ease-in-out infinite;
-}
-
-@keyframes pulse {
-    0% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.5;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-/* Error message styling */
-.error-message {
-    color: #ef4444;
-    font-weight: 500;
-    padding: 1rem;
-    background-color: #fef2f2;
-    border: 1px solid #fecaca;
-    border-radius: 0.5rem;
-    margin: 1rem 0;
-}
-
-/* Success message styling */
-.success-message {
-    color: #606c38;
-    font-weight: 500;
-    padding: 1rem;
-    background-color: #f0fdf4;
-    border: 1px solid #bbf7d0;
-    border-radius: 0.5rem;
-    margin: 1rem 0;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .umkm-image {
-        width: 120px;
-        height: 120px;
-    }
-
-    .detail-container {
-        padding: 1rem;
-    }
-}
-
-/* Category badge styling */
-.category-badge {
-    display: inline-block;
-    background-color: #dbeafe;
-    color: #1e40af;
-    padding: 0.25rem 0.75rem;
-    border-radius: 9999px;
-    font-size: 0.875rem;
-    font-weight: 500;
+/* Right Column: Details */
+.detail-content h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+    line-height: 1.2;
     margin-bottom: 0.5rem;
 }
 
-/* Address styling */
-.address-info {
-    background-color: #f9fafb;
-    padding: 0.75rem;
-    border-radius: 0.5rem;
-    margin: 1rem 0;
+.category-badge {
+    display: inline-block;
+    background-color: var(--accent-tan);
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
 }
 
-/* Description styling */
-.description {
-    line-height: 1.6;
-    color: #6b7280;
-    margin: 1rem 0;
-    padding: 0.75rem;
-    background-color: #f9fafb;
-    border-radius: 0.5rem;
+.info-section {
+    margin-top: 2rem;
+}
+
+.info-section h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--accent-tan);
+    padding-bottom: 0.5rem;
+}
+
+.info-section p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--font-light);
+}
+
+/* Loading & Error States */
+.loading-state, .error-state {
+    text-align: center;
+    padding: 4rem;
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.loading-state p, .error-state p {
+    font-size: 1.1rem;
+    color: var(--font-light);
+}
+
+/* Footer */
+.footer {
+  background: linear-gradient(135deg, #283618 0%, #606c38 50%, #3a4a26 100%);
+  color: white;
+  text-align: center;
+  padding: 1.5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::after {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: -10%;
+  width: 120%;
+  height: 100px;
+  background: rgba(254, 250, 224, 0.05);
+  transform: skewY(-2deg);
+  border-radius: 50%;
+}
+
+.footer-content {
+  position: relative;
+  z-index: 1;
+}
+
+.footer p {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }

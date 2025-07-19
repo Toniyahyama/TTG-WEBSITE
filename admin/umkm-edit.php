@@ -42,13 +42,10 @@ if (!$umkm) {
             <nav class="sidebar-nav">
                 <ul>
                     <li>
-                        <a href="dashboard.php">Dashboard</a>
+                        <a href="#" onclick="alert('Selesaikan terlebih dahulu pengeditan UMKM ini!');" class="active">Dashboard</a>
                     </li>
                     <li>
-                        <a href="umkm-list.php" class="active">Manajemen UMKM</a>
-                    </li>
-                    <li>
-                        <a href="../backend/logout.php" class="logout">Logout</a>
+                        <a href="#" onclick="alert('Selesaikan terlebih dahulu pengeditan UMKM ini!');" class="active">Manajemen UMKM</a>
                     </li>
                 </ul>
             </nav>

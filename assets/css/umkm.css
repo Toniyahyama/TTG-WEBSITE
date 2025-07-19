@@ -1,14 +1,22 @@
-/* Custom CSS for UMKM Page */
+/* Custom CSS for UMKM Page - Simple Elegant Redesign */
 
-/* Color Variables */
+/* Color Palette Variables */
 :root {
-  --primary-color: #606C38;
-  --primary-hover: #4a5329;
+  --primary-dark: #283618;
+  --primary: #606C38;
+  --background-cream: #FEFAE0;
+  --accent-tan: #DDA15E;
+  --accent-terracotta: #BC6250;
+  --font-dark: #374151;
+  --font-light: #6B7280;
+  --border-color: #E5E7EB;
 }
 
-/* Header and Footer Background */
+body {
+    background-color: var(--background-cream);
+}
 
-
+/* Header & Footer */
 .navbar {
   background-color: #606c38;
   color: white;
@@ -31,6 +39,7 @@
 .navbar-title {
   font-size: 1.5rem;
   font-weight: 700;
+  color: #fefae0;
 }
 
 .navbar-nav {
@@ -58,142 +67,228 @@
   color: #fef3c7;
 }
 
-/* Primary Button Styling */
-.btn-primary {
-  background-color: var(--primary-color);
-  transition: opacity 0.3s ease;
+.footer {
+  background: linear-gradient(135deg, #283618 0%, #606c38 50%, #3a4a26 100%);
+  color: white;
+  text-align: center;
+  padding: 1.5rem 0;
+  position: relative;
+  overflow: hidden;
 }
 
-.btn-primary:hover {
-  opacity: 0.9;
-}
-
-/* Dropdown Box Styling */
-.dropdown-box {
+.footer::after {
+  content: '';
   position: absolute;
-  z-index: 10;
+  top: -50px;
+  left: -10%;
+  width: 120%;
+  height: 100px;
+  background: rgba(254, 250, 224, 0.05);
+  transform: skewY(-2deg);
+  border-radius: 50%;
 }
 
-/* RW Button Styling */
-.rw-btn {
+.footer-content {
+  position: relative;
+  z-index: 1;
+}
+
+.footer p {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Search Bar */
+.search-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.85rem 1.25rem 0.85rem 3.25rem;
+  border: 1px solid var(--border-color);
+  border-radius: 9999px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
   background-color: white;
-  border: 1px solid #d1d5db;
-  color: #374151;
-  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-.rw-btn:hover {
-  background-color: #f3f4f6;
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(96, 108, 56, 0.2);
 }
 
-.rw-btn.active {
-  background-color: var(--primary-color) !important;
-  color: white !important;
+.search-icon {
+  position: absolute;
+  left: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
-/* Category Button Styling */
+.clear-search {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  cursor: pointer;
+}
+
+/* Filter Container */
+.filter-container {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  border: 1px solid var(--border-color);
+}
+
+@media (min-width: 768px) {
+  .filter-container {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+}
+
+/* Filter & Dropdown Buttons */
+.btn-filter-toggle {
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+    color: var(--font-dark);
+    transition: all 0.2s ease;
+}
+
+.btn-filter-toggle:hover {
+    border-color: var(--primary);
+}
+
+.dropdown-box {
+    position: absolute;
+    z-index: 20;
+}
+
 .category-btn {
-  transition: all 0.3s ease;
+    transition: all 0.2s ease;
+}
+
+.category-btn:hover {
+    background-color: #f3f4f6;
+    color: var(--primary-dark);
 }
 
 .category-btn.active {
-  background-color: var(--primary-color) !important;
-  color: white !important;
+    background-color: var(--primary) !important;
+    color: white !important;
+    font-weight: 600;
 }
 
-/* UMKM Card Styling */
+/* RW Buttons */
+.rw-btn {
+  background-color: white;
+  border: 1px solid var(--border-color);
+  color: var(--font-light);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  padding: 0.5rem 1rem;
+}
+
+.rw-btn:hover {
+  background-color: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.rw-btn.active {
+  background-color: var(--primary) !important;
+  color: white !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* UMKM Card */
 .umkm-card {
   background-color: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-color);
   padding: 1.5rem;
   text-align: center;
   cursor: pointer;
-  transition: box-shadow 0.3s ease;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .umkm-card:hover {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .umkm-card img {
-  width: 6rem;
-  height: 6rem;
+  width: 7rem;
+  height: 7rem;
   margin: 0 auto 1rem auto;
   border-radius: 50%;
-  border: 2px solid #25D366;
   object-fit: cover;
+  border: 3px solid white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .umkm-card h3 {
-  font-size: 1.125rem;
-  font-weight: bold;
-  color: #1f2937;
-  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 0.25rem;
 }
 
 .umkm-card .category {
-  color: var(--primary-color);
-  font-weight: 500;
-  margin-bottom: 0.5rem;
+  color: var(--accent-tan);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .umkm-card .description {
-  color: #6b7280;
-  font-size: 0.875rem;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
+  color: var(--font-light);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  flex-grow: 1; /* Allows description to take up space */
+  line-height: 1.5;
 }
 
 .umkm-card .whatsapp-btn {
   background-color: #25D366;
   color: white;
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.25rem;
   border-radius: 9999px;
   text-decoration: none;
   display: inline-block;
-  margin-top: 1rem;
-  transition: opacity 0.3s ease;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  margin-top: auto; /* Pushes button to the bottom */
 }
 
 .umkm-card .whatsapp-btn:hover {
-  opacity: 0.9;
+  transform: scale(1.05);
   background-color: #1ebe57;
 }
 
-.filter-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* Elemen sejajar di tengah */
-  gap: 1.5rem;
-  /* Jarak antar elemen */
-}
-
-.footer {
-    background-color: #606c38 !important;
-    color: white;
-    text-align: center;
-    padding: 1rem 0;
-}
-
-.footer-separator {
-    margin: 0 0.25rem;
-    color: #fff;
-}
-
-.detail-container {
-    transition: all 0.3s ease;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .dropdown-box {
-    width: 100%;
-    position: relative;
-  }
-
-  .flex-col.md\\:flex-row {
-    gap: 1rem;
-  }
+.search-highlight {
+  background-color: var(--accent-tan);
+  color: white;
+  padding: 0.1rem 0.2rem;
+  border-radius: 0.25rem;
 }

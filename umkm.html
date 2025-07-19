@@ -9,16 +9,13 @@
   <link rel="stylesheet" href="assets/css/umkm.css" />
 </head>
 
-<body class="bg-gray-100 min-h-screen font-sans flex flex-col">
-
-  <!-- Header -->
+<body class="min-h-screen font-sans flex flex-col">
+  <!-- Header/Navbar -->
   <header class="navbar">
     <div class="container mx-auto flex justify-between items-center">
       <div class="navbar-brand">
-        <a href="index.html" class="flex items-center">
-          <img src="uploads/logo_pemkot_sby.png" alt="Logo UMKM Tanjung Sari" class="navbar-logo" />
-          <h1 class="navbar-title ml-2">Kelurahan Tanjungsari</h1>
-        </a>
+        <img src="uploads/logo_pemkot_sby.png" alt="Logo UMKM Tanjung Sari" class="navbar-logo" />
+        <h1 class="navbar-title ml-2">Kelurahan Tanjungsari</h1>
       </div>
       <nav class="navbar-nav">
         <!-- Social Media Icons -->
@@ -49,60 +46,77 @@
     </div>
   </header>
 
-  <!-- Main Content -->
-  <main class="flex-grow container mx-auto px-4 py-6">
-    <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">Daftar UMKM Kelurahan Tanjungsari</h2>
+  <main class="flex-grow container mx-auto px-4 py-8">
+    <h2 class="text-4xl font-bold text-center text-gray-800 mb-2">Daftar UMKM Kelurahan Tanjungsari</h2>
+    <p class="text-center text-gray-600 mb-8">Temukan produk dan jasa terbaik dari para wirausahawan lokal.</p>
 
-    <!-- Container Filter -->
-    <div class="filter-container bg-white rounded-lg shadow p-6 mb-8 flex flex-col md:flex-row items-center">
-      <!-- Filter Kategori (kiri) -->
-      <div class="w-full md:w-auto mb-4 md:mb-0 relative md:mr-auto flex md:block justify-center">
-        <button onclick="toggleCategoryDropdown()"
-          class="btn-primary text-white px-4 py-2 rounded-full font-semibold hover:opacity-90 shadow">
-          Pilih Kategori
-        </button>
-        <div id="categoryDropdownBox"
-          class="dropdown-box hidden mt-2 w-60 bg-white border border-gray-300 rounded-md shadow-lg z-10 absolute">
-          <div class="py-1">
-            <button onclick="setCategoryFilter('Semua')"
-              class="category-btn w-full text-left px-4 py-2 text-sm hover:bg-gray-100">Semua Kategori</button>
-            <button onclick="setCategoryFilter('Kuliner')"
-              class="category-btn w-full text-left px-4 py-2 text-sm hover:bg-gray-100">Kuliner</button>
-            <button onclick="setCategoryFilter('Jasa')"
-              class="category-btn w-full text-left px-4 py-2 text-sm hover:bg-gray-100">Jasa</button>
-            <button onclick="setCategoryFilter('Toko Kelontong & Peralatan')"
-              class="category-btn w-full text-left px-4 py-2 text-sm hover:bg-gray-100">Toko Kelontong &
-              Peralatan</button>
-            <button onclick="setCategoryFilter('Lainnya')"
-              class="category-btn w-full text-left px-4 py-2 text-sm hover:bg-gray-100">Lainnya</button>
+    <div class="filter-container p-6 mb-8">
+      <div class="w-full md:w-auto relative">
+        <label class="font-medium text-gray-700 mb-2 block text-center md:text-left">Kategori</label>
+        <div class="relative">
+          <button onclick="toggleCategoryDropdown()"
+            class="btn-filter-toggle w-full md:w-60 text-left px-4 py-2 font-semibold shadow-sm flex justify-between items-center">
+            <span id="selectedCategoryText">Semua Kategori</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div id="categoryDropdownBox"
+            class="dropdown-box hidden mt-2 w-full md:w-60 bg-white border border-gray-200 rounded-md shadow-lg z-20 absolute">
+            <div class="py-1">
+              <button onclick="setCategoryFilter('Semua')" class="category-btn w-full text-left px-4 py-2 text-sm">Semua
+                Kategori</button>
+              <button onclick="setCategoryFilter('Kuliner')"
+                class="category-btn w-full text-left px-4 py-2 text-sm">Kuliner</button>
+              <button onclick="setCategoryFilter('Jasa')"
+                class="category-btn w-full text-left px-4 py-2 text-sm">Jasa</button>
+              <button onclick="setCategoryFilter('Toko Kelontong & Peralatan')"
+                class="category-btn w-full text-left px-4 py-2 text-sm">Toko Kelontong & Peralatan</button>
+              <button onclick="setCategoryFilter('Lainnya')"
+                class="category-btn w-full text-left px-4 py-2 text-sm">Lainnya</button>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Filter RW -->
-      <div class="text-center w-full md:w-auto">
-        <p class="font-medium text-gray-700 mb-2">Filter berdasarkan RW:</p>
-        <div id="rwContainer" class="flex flex-wrap justify-center gap-2">
-          <!-- RW Buttons akan diisi JS -->
+      <div class="search-container mb-6">
+        <div class="relative">
+          <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          <input type="text" id="searchInput" class="search-input" placeholder="Cari Produk atau Toko"
+            autocomplete="off" />
+          <button type="button" id="clearSearch" class="clear-search hidden" title="Hapus pencarian">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="w-full md:w-auto text-center md:text-left">
+        <label class="font-medium text-gray-700 mb-2 block">Filter berdasarkan RW</label>
+        <div id="rwContainer" class="flex flex-wrap justify-center md:justify-start gap-2">
         </div>
       </div>
     </div>
+    <div id="searchResults" class="text-center mb-6 text-gray-600 hidden"></div>
 
-    <!-- Container UMKM List -->
     <div class="umkm-list-container">
-      <div id="umkmList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-      <p id="noUmkmMessage" class="text-center text-gray-500 mt-8 hidden">Tidak ada UMKM yang ditemukan.</p>
+      <div id="umkmList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+      <p id="noUmkmMessage" class="text-center text-gray-500 mt-8 hidden col-span-full">Tidak ada UMKM yang ditemukan.
+      </p>
     </div>
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container mx-auto">
-      <p>&copy; 2025 UMKM Kelurahan Tanjungsari. All rights reserved.</p>
+      <p>&copy; 2025 KKN Tanjak 117. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- Script -->
   <script src="assets/js/umkm.js"></script>
 </body>
 
