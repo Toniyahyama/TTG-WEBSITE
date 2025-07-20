@@ -71,23 +71,24 @@ body {
 
 .umkm-image-wrapper {
     position: relative;
-    width: 180px;
-    height: 180px;
+    width: 100%; /* Ubah ukuran agar fleksibel */
+    max-width: 300px; /* Tentukan lebar maksimum */
+    height: auto; /* Sesuaikan tinggi dengan lebar */
     margin: 0 auto 1.5rem auto;
 }
 
 .umkm-image {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 5px solid white;
-    box-shadow: 0 0 0 3px var(--primary), 0 5px 15px rgba(0,0,0,0.1);
+    height: auto; /* Sesuaikan tinggi dengan lebar */
+    object-fit: cover; /* Pastikan gambar tetap proporsional */
+    border-radius: .5rem; /* Hilangkan bentuk lingkaran */
+    border: 3px solid var(--border-color); /* Tambahkan border */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan */
     transition: transform 0.3s ease;
 }
 
 .umkm-image:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Efek zoom saat hover */
 }
 
 .contact-info {
